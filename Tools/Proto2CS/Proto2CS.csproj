@@ -1,24 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     </PropertyGroup>
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>../../Proto/</OutputPath>
+      <OutputPath>../../ToolsApp/Proto2CS/</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <OutputPath>../../Proto/</OutputPath>
+      <OutputPath>../../ToolsApp/Proto2CS/</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
       <Compile Remove=".vs\**" />
+      <Compile Include="..\..\Unity\Assets\Model\Core\ProcessHelper.cs">
+        <Link>ProcessHelper.cs</Link>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

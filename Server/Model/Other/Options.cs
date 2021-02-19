@@ -1,19 +1,34 @@
-﻿#if SERVER
-using CommandLine;
-#endif
+﻿using CommandLine;
 
-namespace ETModel
+namespace ET
 {
-	public class Options
-	{
-		[Option("appId", Required = false, Default = 1)]
-		public int AppId { get; set; }
-		
-		// 没啥用，主要是在查看进程信息能区分每个app.exe的类型
-		[Option("appType", Required = false, Default = AppType.Manager)]
-		public AppType AppType { get; set; }
+    public enum ServerType
+    {
+        Game,
+        Watcher,
+    }
+    
+    public class Options
+    {
+        [Option("StartConfig", Required = true)]
+        public string StartConfig { get; set; }
 
-		[Option("config", Required = false, Default = "../Config/StartConfig/LocalAllServer.txt")]
-		public string Config { get; set; }
-	}
+        [Option("ServerType", Required = false, Default = ServerType.Game, HelpText = "serverType enum")]
+        public ServerType ServerType { get; set; }
+
+        [Option("Develop", Required = false, Default = 0, HelpText = "develop mode")]
+        public int Develop { get; set; }
+
+        [Option("Process", Required = false, Default = 1)]
+        public int Process { get; set; }
+
+        [Option("CreateScenes", Required = false, Default = 1)]
+        public int CreateScenes { get; set; }
+
+        [Option("Console", Required = false, Default = 0)]
+        public int Console { get; set; }
+
+        [Option("LogLevel", Required = false, Default = 0)]
+        public int LogLevel { get; set; }
+    }
 }
